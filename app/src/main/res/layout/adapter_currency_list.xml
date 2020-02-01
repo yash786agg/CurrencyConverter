@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="java.util.Currency"/>
+
+        <variable
+            name="rateList"
+            type="com.app.currencyConverter.domain.entities.RateList" />
+
+    </data>
+
+    <RelativeLayout
+        android:id="@+id/rateItemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="@dimen/dimen_16dp">
+
+        <ImageView
+            android:id="@+id/nationalFlagIv"
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            app:flagImg="@{rateList.currency}"
+            tools:src="@drawable/ic_flag_inr"
+            android:contentDescription="@{String.format(@string/currency_flag_image_desc, rateList.currency)}"/>
+
+        <LinearLayout
+            android:id="@+id/currencyNameLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            android:layout_toStartOf="@+id/currencyRateEdtxt"
+            android:layout_toEndOf="@+id/nationalFlagIv"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/currencyCodeTv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_24dp"
+                android:text="@{rateList.currency}"
+                android:textStyle="bold"
+                android:textColor="@android:color/black"
+                tools:text="IND" />
+
+            <TextView
+                android:id="@+id/currencyNameTv"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_20dp"
+                android:text="@{Currency.getInstance(rateList.currency).displayName}"
+                android:textColor="@color/primary_grey_50"
+                android:textStyle="normal"
+                tools:text="IN Rupees" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/currencyRateEdtxt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:imeOptions="actionDone|flagNoFullscreen"
+            android:inputType="numberDecimal"
+            android:maxEms="@integer/currency_rate_edittext_max_ems"
+            android:maxLength="@integer/currency_rate_edittext_max_length"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:text="@{Double.toString(rateList.rate)}"
+            tools:text="200000.8"/>
+
+    </RelativeLayout>
+
+</layout>
