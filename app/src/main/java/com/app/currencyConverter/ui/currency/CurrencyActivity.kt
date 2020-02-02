@@ -2,7 +2,6 @@ package com.app.currencyConverter.ui.currency
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,7 +26,6 @@ class CurrencyActivity : AppCompatActivity(), CurrencyItem {
     private var isAmountUpdated : Boolean = false
     private var currency : String = EUR_BASE_VALUE
     private var amount : Double = EUR_BASE_PRICE
-    private val TAG : String = "CurrencyActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -92,7 +90,7 @@ class CurrencyActivity : AppCompatActivity(), CurrencyItem {
     override fun onSaveInstanceState(outState : Bundle) {
         super.onSaveInstanceState(outState)
 
-        outState.putBoolean(IS_AMOUNT_UPDATED,isAmountUpdated)
+        outState.putBoolean(IS_AMOUNT_UPDATED,true)
         outState.putString(CURRENCY_VALUE,currency)
         outState.putDouble(AMOUNT_VALUE,amount)
     }
@@ -107,8 +105,6 @@ class CurrencyActivity : AppCompatActivity(), CurrencyItem {
     }
 
     override fun onAmountChanged(currency: String, amount: Double) {
-        Log.e(TAG,"CurrencyItem currency: $currency")
-        Log.e(TAG,"CurrencyItem amount: $amount")
         isAmountUpdated = true
         this.currency = currency
         this.amount = amount

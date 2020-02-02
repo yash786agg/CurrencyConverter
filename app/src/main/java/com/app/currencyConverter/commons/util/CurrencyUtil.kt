@@ -2,8 +2,6 @@ package com.app.currencyConverter.commons.util
 
 import android.content.Context
 import com.app.currencyConverter.R
-import java.text.NumberFormat
-import java.util.*
 
 class CurrencyUtil {
     companion object {

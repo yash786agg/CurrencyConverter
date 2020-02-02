@@ -2,7 +2,6 @@ package com.app.currencyConverter.ui.currency
 
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -20,8 +19,6 @@ class CurrencyAdapter: RecyclerView.Adapter<CurrencyAdapter.MyViewHolder>() {
 
     private var onCurrencyItemClickListener : CurrencyItem? = null
     private var rateList : ArrayList<RateList> = ArrayList()
-
-    private val TAG : String = "CurrencyActivity"
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
         val binding: AdapterCurrencyListBinding = DataBindingUtil
@@ -74,9 +71,6 @@ class CurrencyAdapter: RecyclerView.Adapter<CurrencyAdapter.MyViewHolder>() {
                         val baseCurrencyRate = if (inputAmount.isEmpty() && inputAmount == ".") 1.0
                         else rateStringToDouble(inputAmount)
 
-                        Log.e(TAG,"CurrencyAdapter onTextChanged country: ${rateList[0].currency}")
-                        Log.e(TAG,"CurrencyAdapter onTextChanged baseCurrencyRate: $baseCurrencyRate")
-
                         clickListener?.onAmountChanged(rateList[0].currency, baseCurrencyRate)
                     }
                 }
@@ -85,24 +79,18 @@ class CurrencyAdapter: RecyclerView.Adapter<CurrencyAdapter.MyViewHolder>() {
 
         private fun scrollToTop() {
 
-            Log.e(TAG,"CurrencyAdapter scrollToTop")
-
             //If view is already on top, we do nothing, otherwise...
             layoutPosition.takeIf { it > 0 }?.also { currentPosition ->
-
-                Log.e(TAG,"CurrencyAdapter scrollToTop if")
 
                 //We move it from its current position
                 rateList.removeAt(currentPosition).also {
                     //And we add it to the top
                     rateList.add(0, it)
-                    Log.e(TAG,"CurrencyAdapter scrollToTop if if")
                     onCurrencyItemClickListener?.onAmountChanged(rateList[0].currency,rateList[0].rate)
                 }
 
                 //We notify the recyclerview the view moved to position 0
                 notifyItemMoved(currentPosition, 0)
-
             }
         }
     }

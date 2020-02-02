@@ -12,12 +12,11 @@
             type="com.app.currencyConverter.domain.entities.RateList" />
 
     </data>
-
-    <RelativeLayout
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rateItemLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
         android:clickable="true"
         android:focusable="true"
         android:focusableInTouchMode="true"
@@ -31,44 +30,44 @@
             android:layout_centerVertical="true"
             app:flagImg="@{rateList.currency}"
             tools:src="@drawable/ic_flag_inr"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             android:contentDescription="@{String.format(@string/currency_flag_image_desc, rateList.currency)}"/>
 
-        <LinearLayout
-            android:id="@+id/currencyNameLayout"
-            android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/currencyCodeTv"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
+            android:text="@{rateList.currency}"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            tools:text="IND"
             android:layout_marginStart="@dimen/dimen_16dp"
             android:layout_marginEnd="@dimen/dimen_16dp"
-            android:layout_toStartOf="@+id/currencyRateEdtxt"
-            android:layout_toEndOf="@+id/nationalFlagIv"
-            android:orientation="vertical">
+            app:layout_constraintBottom_toTopOf="@id/currencyNameTv"
+            app:layout_constraintEnd_toStartOf="@id/currencyRateEdtxt"
+            app:layout_constraintStart_toEndOf="@id/nationalFlagIv"
+            app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/currencyCodeTv"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_24dp"
-                android:text="@{rateList.currency}"
-                android:textStyle="bold"
-                android:textColor="@android:color/black"
-                tools:text="IND" />
-
-            <TextView
-                android:id="@+id/currencyNameTv"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/dimen_20dp"
-                android:text="@{Currency.getInstance(rateList.currency).displayName}"
-                android:textColor="@color/primary_grey_50"
-                android:textStyle="normal"
-                tools:text="IN Rupees" />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/currencyNameTv"
+            android:layout_width="@dimen/dimen_0dp"
+            android:layout_height="wrap_content"
+            android:text="@{Currency.getInstance(rateList.currency).displayName}"
+            android:textColor="@color/primary_grey_50"
+            android:textStyle="normal"
+            tools:text="IN Rupees"
+            android:layout_marginStart="@dimen/dimen_16dp"
+            android:layout_marginEnd="@dimen/dimen_16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/currencyRateEdtxt"
+            app:layout_constraintStart_toEndOf="@id/nationalFlagIv"
+            app:layout_constraintTop_toBottomOf="@id/currencyCodeTv" />
 
         <EditText
             android:id="@+id/currencyRateEdtxt"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/dimen_0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:imeOptions="actionDone|flagNoFullscreen"
             android:inputType="numberDecimal"
@@ -76,9 +75,15 @@
             android:maxLength="@integer/currency_rate_edittext_max_length"
             android:textColor="@android:color/black"
             android:textStyle="bold"
+            android:background="@null"
             android:text="@{Double.toString(rateList.rate)}"
-            tools:text="200000.8"/>
+            tools:text="200000.8"
+            android:gravity="end"
+            app:layout_constraintBottom_toBottomOf="@id/nationalFlagIv"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/currencyNameTv"
+            app:layout_constraintTop_toTopOf="@id/nationalFlagIv"/>
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
