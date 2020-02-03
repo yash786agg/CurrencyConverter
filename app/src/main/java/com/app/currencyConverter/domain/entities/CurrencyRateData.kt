@@ -8,4 +8,4 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class CurrencyRateData(@field:Json(name = BASE_TAG) val base: String,
-                            @field:Json(name = RATE_TAG) val rates: Map<String, Float>) : Parcelable
+                            @field:Json(name = RATE_TAG) val rates: Map<String, Double>) : Parcelable
