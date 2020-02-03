@@ -2,6 +2,8 @@ package com.app.currencyConverter.commons.util
 
 import android.content.Context
 import com.app.currencyConverter.R
+import java.text.NumberFormat
+import java.util.*
 
 class CurrencyUtil {
     companion object {
@@ -50,7 +52,8 @@ class CurrencyUtil {
             if(value.isEmpty() || value.toDoubleOrNull() == 0.0 || value == ".") {
                 return 1.0
             }
-            return value.toDouble()
+            val nf = NumberFormat.getInstance(Locale.US)
+            return nf.parse(value).toDouble()
         }
     }
 }
