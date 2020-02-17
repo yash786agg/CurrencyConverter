@@ -17,20 +17,17 @@ base currency against the other currency values.
 * __[Android Architecture Components](https://developer.android.com/topic/libraries/architecture/index.html)__
 * __[Instrumented Unit Testing](https://developer.android.com/training/testing/unit-testing/instrumented-unit-tests)__
 
-Above Features are used to make code simple, generic, understandable, clean and easily maintainable
-for future development. Especially **Koin** for dependency injection and **RxJava** for
-asynchronous API call continuously at every second of interval.
+## Set Up
 
-This application supports the screen rotation without losing the data and also use **Constraintlayout** to design layout which
-gives better **UI support for both Mobile and Tablet**, and even when the screen rotates.
+Clone the repository and import the project in Android Studio.You can also try the demo app
+[Currency_Converter_debug.apk](https://github.com/yash786agg/CurrencyConverter/blob/master/demo_apk/Currency_Converter_debug.apk)
+available in the demo_apk folder.
 
+## Build it
 
-## Running and Building the application
-
-You can run the app on a real device or an emulator.
-
-* __[Run on a real device](https://developer.android.com/training/basics/firstapp/running-app#RealDevice)__
-* __[Run on an emulator](https://developer.android.com/training/basics/firstapp/running-app#Emulator)__
+You can [build and run](https://developer.android.com/studio/run) the project using the Android
+Studio/Gradle. You need an android [emulator](https://developer.android.com/studio/run/emulator)
+or a [real device](https://developer.android.com/studio/run/device) to test the build.
 
 
 # Prerequisites
@@ -44,3 +41,9 @@ You can run the app on a real device or an emulator.
 * __[Android Studio](https://developer.android.com/studio/index.html)__ - The Official IDE for Android
 * __[Kotlin](https://developer.android.com/kotlin)__ - Language used to build the application
 * __[Gradle](https://gradle.org)__ - Build tool for Android Studio
+
+Thanks for reading this repo. Be sure to click ★ below to recommend this repo if you found it helpful. It means a lot to me.
+
+For more about programming, follow me on [Medium](https://medium.com/@yash786agg)
+
+Also, Let’s become friends on [Linkedin](http://bit.ly/24t4EVI)
